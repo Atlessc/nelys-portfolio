@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { createClient } from 'contentful';
+import { Link } from 'react-router-dom';
+import '../styles/home.css';
 
 const client = createClient({
   space: import.meta.env.VITE_CONTENTFUL_SPACE_ID,
@@ -11,39 +13,12 @@ export default function Home() {
 
 
     const [posts, setPosts] = useState(null);
-
-    const client = contentful.createClient({
-      space: '<space_id>',
-      environment: '<environment_id>', // defaults to 'master' if not set
-      accessToken: '<content_delivery_api_key>'
-    })
     
     client.getEntries()
-    .then((response) => console.log(response.items))
+    .then((response) => setPosts(response.items))
     .catch(console.error)
 
-    // useEffect(() => {
-    //   window
-    //     .fetch(`https://graphql.contentful.com/content/v1/spaces/${client.space}/`, {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         // Authenticate the request
-    //         Authorization: `Bearer ${client.accessToken}`,
-    //       },
-    //       // send the GraphQL query
-    //       body: JSON.stringify({ query }),
-    //     })
-    //     .then((response) => response.json())
-    //     .then(({ data, errors }) => {
-    //       if (errors) {
-    //         console.error(errors);
-    //       }
   
-    //       // rerender the entire component with new data
-    //       console.log(data.pageCollection.items[0]);
-    //     });
-    // }, []);
   return (
     <>
       <div className="home">
@@ -54,8 +29,8 @@ export default function Home() {
           {posts ? (
         posts.map((post) => (
           <div key={post.sys.id} className="post-thumbnail">
-            <Link to={`/projects/${post.fields.postUuid}`}>
-              <img src={post.fields.thumbnail.fields.file.url} alt={post.fields.title} />
+            <Link to={`/projects/${post.fields.slug}`}>
+              <img src={post.fields.coverImage.fields.file.url} alt={post.fields.title} />
               <h2>{post.fields.title}</h2>
             </Link>
           </div>
@@ -72,13 +47,22 @@ export default function Home() {
 
 const query = `#graphql
 {
-  pageCollection {
+  postCollection {
     items {
       title
-      logo {
+      slug
+      date
+      coverImage {
+        title
+        description
+        contentType
+        fileName
+        size
         url
+        width
+        height
       }
     }
   }
 }
-`
+`;
