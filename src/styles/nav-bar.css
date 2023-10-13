@@ -22,6 +22,7 @@
   color: transparent;
   text-decoration: none;
   -webkit-background-clip: text;
+  background-clip: text;
   transition: color 300ms;
   -webkit-transition: color 300ms;
   -moz-transition: color 300ms;
