@@ -6,6 +6,15 @@
   text-align: center;
 }
 
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
+  min-height: calc(100vh - 8.75rem);
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

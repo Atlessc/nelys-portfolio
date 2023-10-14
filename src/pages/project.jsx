@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Client from '../utils/createClient';
+import Gallery from '../components/gallery';
+import '../styles/project.css';
 
 function Project() {
   const { id } = useParams();
@@ -29,24 +31,28 @@ function Project() {
   , [project]);
   // Render the post data
   return (
-    <div className="post-container">
-      <h1>{project?.title}</h1>
-      <p>{description}</p>
+    <div className="project-container">
+      <h1 className='project-title'>{project?.title}</h1>
+      <p className='project-description'>{description}</p>
       {
         project?.images.map((image, index) => (
-          <img 
-          key={index}
-          src={image.fields.file.url} 
-          alt={project?.title}
-          loading='lazy' 
-          style={{
-            width:`${image.fields.file.width}px`,
-            height:`${image.fields.file.height}px`
-          }
-          } />
+          <div className='image-container'>
+            <img
+              className='project-image'
+              key={index}
+              src={image.fields.file.url} 
+              alt={image.title}
+              loading='lazy' 
+              style={{
+                maxWidth:`${image.fields.file.width}px`,
+                maxHeight:`${image.fields.file.height}px`
+              }} 
+            />
+            <p className='image-description'>{image.fields.description}</p>
+          </div>
         ))
       }
-      <img src={project?.images[0].fields.file.url} alt={project?.title} />
+      <Gallery />
     </div>
   );
 }

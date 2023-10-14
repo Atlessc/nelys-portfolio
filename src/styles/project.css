@@ -1,0 +1,20 @@
+.project-container {
+  padding: 0 1.5rem;
+}
+
+.image-container {
+  margin-bottom: 5rem;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 1);
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.project-description {
+  margin-bottom: 3.5rem;
+  font-size: 1.2rem;
+  padding: 0 2.5rem;
+}

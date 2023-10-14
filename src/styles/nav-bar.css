@@ -1,21 +1,21 @@
 .nav-bar {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin: 0 auto;
-  padding: 0.5rem 1rem;
-  width: calc(100% - 2rem);
-  border-radius: 15px;
+  width: 100%;
+  padding: 1rem 0;
   height: 3rem;
-  background-color: #484848;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  -ms-border-radius: 15px;
-  -o-border-radius: 15px;
+  background-color: #242424;
+  box-shadow: 0 10px 45px rgba(0, 0, 0, 0.4);
+  border-bottom: 2px solid #fff;
 }
 
 .nav-logo {
+  position: absolute;
+  left: 0;
+  padding: 0 1rem;
   font-size: 2.5rem;
   font-weight: bolder;
   background: linear-gradient(210deg, #ff0000, #2d4cff);
@@ -35,14 +35,46 @@
   text-decoration: none;
 }
 
-.floating-nav-items {
+.nav-menu-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 1rem;
+  font-size: 1.5rem;
+}
+
+.nav-links-container {
   position: absolute;
-  top: 3.84rem;
-  left: 0;
+  right: 0;
+}
+
+.nav-menu {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  justify-content: center;
+  padding: 1rem 1rem;
+  width: 40px;
+  height: 25px;
+  text-align: center;
+  text-decoration: none;
+  background-color: white;
+  color: black;
+  margin: 0.5rem;
+  font-size: 2rem;
+  font-weight: 500;
+  border-radius: 15px;
+  line-height: 1;
+}
+
+.floating-nav-items {
+  position: absolute;
+  top: 5.125rem;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
   height: calc(100vh - 3.84rem);
   background: rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
@@ -54,13 +86,20 @@
   align-items: center;
 }
 
+.nav-links {
+  position: absolute;
+  right: 0;
+  margin-right: 0.5rem;
+}
+
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
-  width: 150px;
+  width: 400px;
   text-align: center;
   text-decoration: none;
-  background: white;
+  background-color: white;
+  text-decoration: none;
   color: black;
   margin: 0.5rem;
   font-size: 1.2rem;
@@ -79,4 +118,26 @@
 
 .menu-nav-items .nav-link {
   width: 70px;
+}
+
+@media screen and (max-width: 768px) {
+  .floating-nav-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100vw - 1rem);
+    top: 3.84rem;
+  }
+  
+  .nav-link {
+    width: 200px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+
+}
+
+@media screen and (max-width: 1024px) {
+  
 }
