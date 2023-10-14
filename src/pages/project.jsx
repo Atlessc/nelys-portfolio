@@ -16,29 +16,34 @@ function Project() {
       limit: 1
     })
       .then((response) => 
-      setProject(response.items[0].fields)
+      setProject(response.items[0].fields),
       )
       .catch(console.error);
     }, [id]);
-    
-    function setStates() {
-      setDescription(project.description.content[0].content[0].value)
+
+
+
+  useEffect(() => {
+    setDescription(project?.description.content[0].content[0].value);
   }
-
-
-
+  , [project]);
   // Render the post data
   return (
     <div className="post-container">
       <h1>{project?.title}</h1>
       <p>{description}</p>
       {
-        project?.images.map((image) => (
+        project?.images.map((image, index) => (
           <img 
+          key={index}
           src={image.fields.file.url} 
           alt={project?.title}
           loading='lazy' 
-          style={{width:`${image.fields.file.width}px`}} />
+          style={{
+            width:`${image.fields.file.width}px`,
+            height:`${image.fields.file.height}px`
+          }
+          } />
         ))
       }
       <img src={project?.images[0].fields.file.url} alt={project?.title} />
