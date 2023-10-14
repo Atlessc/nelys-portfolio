@@ -18,21 +18,29 @@
   padding: 0 1rem;
   font-size: 2.5rem;
   font-weight: bolder;
-  background: linear-gradient(210deg, #ff0000, #2d4cff);
+  /*background: linear-gradient(210deg, 1%, #ff0000, 50%, #2d4cff, 100%);*/
+  background: linear-gradient(.10turn, red, 55%, blue);
   color: transparent;
   text-decoration: none;
   -webkit-background-clip: text;
   background-clip: text;
-  transition: color 300ms;
-  -webkit-transition: color 300ms;
-  -moz-transition: color 300ms;
-  -ms-transition: color 300ms;
-  -o-transition: color 300ms;
+  transition: all 350ms ease-in-out;
+  -webkit-transition: all 350ms ease-in-out;
+  -moz-transition: all 350ms ease-in-out;
+  -ms-transition: all 350ms ease-in-out;
+  -o-transition: all 350ms ease-in-out;
 }
 
 .nav-logo:hover {
   color: #fff;
   text-decoration: none;
+  background: linear-gradient(.15turn,white, 100%);
+  
+}
+
+a {
+  text-decoration: none !important;
+  color: inherit;
 }
 
 .nav-menu-container {
