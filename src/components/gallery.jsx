@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Client from '../utils/createClient';
 import '../styles/home.css';
@@ -7,9 +7,13 @@ export default function Gallery() {
 
   const [posts, setPosts] = useState(null);
     
+useEffect (() => {
   Client.getEntries()
   .then((response) => setPosts(response.items))
   .catch(console.error)
+}
+, []);
+
 
   function ScrollToTop() {
     window.scrollTo({top: 0, behavior: 'smooth'});
